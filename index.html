@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classification</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .preview { margin: 20px; }
+        img { max-width: 300px; border: 2px solid #ddd; }
+    </style>
+    <script>
+        function previewImage() {
+            const fileInput = document.getElementById("imagefile");
+            const preview = document.getElementById("preview-img");
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            
+            if (fileInput.files && fileInput.files[0]) {
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Image Classification</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" id="imagefile" name="imagefile" accept="image/*" onchange="previewImage()">
+        <br><br>
+        <input type="submit" value="Predict">
+    </form>
+    <div class="preview">
+        <img id="preview-img" src="#" alt="Image Preview" style="display:none;" />
+    </div>
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+        <img src="{{ uploaded_image }}" alt="Uploaded Image" style="max-width: 300px;">
+    {% endif %}
+</body>
+</html>
