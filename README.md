@@ -11,5 +11,5 @@ other Polynomial Kernel and the Radial Basis Function (RBF) Kernel they are not 
  with three fully convolutional layers was observed to produced a best result that is accuracy of 94%.
 
  
-please see the Report evey concept is explained in detailed.
+please see the Report every concept is explained in detailed.
 !Report is uploaded.
